@@ -12,7 +12,7 @@ let videos = [
     rating: 5,
     comments: 2,
     createdAt: "2 minutes ago",
-    views: 59,
+    views: 1,
     id: 2,
   },
   {
@@ -28,11 +28,11 @@ let videos = [
 export const trending = (req, res) => {
   return res.render("home", { pageTitle: "Home", videos });
 };
-export const see = (req, res) => {
+export const watch = (req, res) => {
   const { id } = req.params;
   const video = videos[id - 1];
   console.log(video);
-  return res.render("watch", { pageTitle: `Watching ${video.title}` });
+  return res.render("watch", { pageTitle: `Watching ${video.title}`, video });
 };
 export const edit = (req, res) => res.render("edit", { pageTitle: "Edit" });
 export const search = (req, res) => res.send("Search Videos");
