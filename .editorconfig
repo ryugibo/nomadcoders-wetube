@@ -1,2 +1,5 @@
 [*.pug]
 tab_width = 4
+
+[*.js]
+tab_width = 2
