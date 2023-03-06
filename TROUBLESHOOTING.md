@@ -11,3 +11,13 @@
 - 몇가지 해법 테스트해보고 안되서 서비스 실행은 포기
 - 아래 명령어로 작업하는 동안만 MongoDB를 띄워놓고 함.
   `sudo mongod --dbpath ~/data/db`
+
+## .env 필요한 상수
+
+- `DB_URL`: mongodb 주소
+
+- `COOKIE_SECRET`: 쿠키 비밀키
+
+- `GITHUB_CLIENT`: Github OAuth App client id
+
+- `GITHUB_SECRET`: Github OAuth App client secret
