@@ -67,6 +67,17 @@ export const postEdit = async (req, res) => {
     },
     body: { name, email, username, location },
   } = req;
+
+  const isExistsUsername = await User.exists({
+    $and: [{ _id: { $ne: id }, $or: [{ username }, { email }] }],
+  });
+  if (isExistsUsername) {
+    return res.status(400).render("edit-profile", {
+      pageTitle: "Edit Profile",
+      errorMessage: "This username/email is already taken",
+    });
+  }
+
   const updatedUser = await User.findByIdAndUpdate(
     id,
     {
