@@ -5,6 +5,7 @@ import fetch from "node-fetch";
 export const getJoin = (req, res) => {
   return res.render("join", { pageTitle: "Create Account" });
 };
+
 export const postJoin = async (req, res) => {
   const pageTitle = "Create Account";
   const { name, email, username, password1, password2, location } = req.body;
@@ -33,9 +34,11 @@ export const postJoin = async (req, res) => {
     });
   }
 };
+
 export const getLogin = (req, res) => {
   return res.render("login", { pageTitle: "Login" });
 };
+
 export const postLogin = async (req, res) => {
   const pageTitle = "Login";
   const { username, password } = req.body;
@@ -57,9 +60,11 @@ export const postLogin = async (req, res) => {
   req.session.user = user;
   return res.redirect("/");
 };
+
 export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
+
 export const postEdit = async (req, res) => {
   const {
     session: {
@@ -93,11 +98,25 @@ export const postEdit = async (req, res) => {
   req.session.user = updatedUser;
   return res.redirect("/users/edit");
 };
-export const see = (req, res) => res.send("See User");
+
+export const see = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  if (!user) {
+    return res.status(404).render("404", { pageTitle: "User not found." });
+  }
+
+  return res.render("users/profile", {
+    pageTitle: user.name,
+    user,
+  });
+};
+
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
 };
+
 export const startGithubLogin = (req, res) => {
   const baseUrl = "https://github.com/login/oauth/authorize";
   const config = {
@@ -109,6 +128,7 @@ export const startGithubLogin = (req, res) => {
   const finalUrl = `${baseUrl}?${params}`;
   return res.redirect(finalUrl);
 };
+
 export const finishGithubLogin = async (req, res) => {
   const baseUrl = "https://github.com/login/oauth/access_token";
   const config = {
