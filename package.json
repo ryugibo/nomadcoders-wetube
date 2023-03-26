@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ryugibo/nomadcoders-wetube#readme",
   "dependencies": {
+    "aws-sdk": "~2.895.0",
     "bcrypt": "^5.1.0",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.3",
@@ -29,7 +30,8 @@
     "express-session": "^1.17.3",
     "mongoose": "^6.10.0",
     "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.1",
+    "multer": "~1.4.2",
+    "multer-s3": "~2.9.0",
     "node-fetch": "^2.6.9",
     "pug": "^3.0.2"
   },

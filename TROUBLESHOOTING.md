@@ -21,3 +21,7 @@
 - `GITHUB_CLIENT`: Github OAuth App client id
 
 - `GITHUB_SECRET`: Github OAuth App client secret
+
+- `AWS_ID`: AWS AccessKey
+
+- `AWS_SECRET`: AWS AccessKey Secret
