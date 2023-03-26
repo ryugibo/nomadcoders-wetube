@@ -102,7 +102,13 @@ const handleMouseLeave = () => {
 };
 
 const handleKeyDown = (event) => {
-  const { code } = event;
+  const {
+    code,
+    srcElement: { type },
+  } = event;
+  if (type === "textarea") {
+    return;
+  }
   if (code === "Space") {
     handlePlayClick();
   } else if (code === "KeyF") {
